@@ -22,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //reportar la situacion
+        FirebaseCrash.report(new Exception("Report antes de crear contactos"));
+
         //Añadimos los contactos
         databaseHandler.addContact(contact);
         databaseHandler.addContact(contact2);
@@ -30,8 +33,11 @@ public class MainActivity extends AppCompatActivity {
         Log.v("Contacto SQL", c1.getName()+" --- "+c1.getPhoneNumber());
         Log.v("Contacto SQL", " Contactos: "+databaseHandler.getAllContacts());
 
-        FirebaseCrash.report(new Exception("Primer fatal error"));
+        FirebaseCrash.report(new Exception("Primer error"));
         FirebaseCrash.log("Log de prueba");
+        FirebaseCrash.report(new Exception("Segundo error"));
+        FirebaseCrash.report(new Exception("Tercer error despues del contacto"));
+        FirebaseCrash.log("Log de prueba 2");
     }
 
 

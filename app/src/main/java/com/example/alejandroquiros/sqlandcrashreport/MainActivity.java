@@ -7,6 +7,8 @@ import android.widget.Toast;
 
 import com.example.alejandroquiros.sqlandcrashreport.sqlliteadmin.Contact;
 import com.example.alejandroquiros.sqlandcrashreport.sqlliteadmin.DatabaseHandler;
+import com.google.firebase.FirebaseException;
+import com.google.firebase.crash.FirebaseCrash;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
         Contact c1 = databaseHandler.getContact(4);
         Log.v("Contacto SQL", c1.getName()+" --- "+c1.getPhoneNumber());
         Log.v("Contacto SQL", " Contactos: "+databaseHandler.getAllContacts());
+
+        FirebaseCrash.report(new Exception("Primer fatal error"));
+        FirebaseCrash.log("Log de prueba");
     }
 
 

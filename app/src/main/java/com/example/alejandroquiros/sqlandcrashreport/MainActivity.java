@@ -11,7 +11,8 @@ import com.example.alejandroquiros.sqlandcrashreport.sqlliteadmin.DatabaseHandle
 public class MainActivity extends AppCompatActivity {
 
     DatabaseHandler databaseHandler = new DatabaseHandler(this);
-    Contact contact = new Contact(4,"Alejandro", "123445634");
+    Contact contact = new Contact(4,"Alejandro", "123434");
+    Contact contact2 = new Contact(5,"Guille", "236274");
 
 
     @Override
@@ -19,10 +20,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Añadimos un contacto
+        //Añadimos los contactos
         databaseHandler.addContact(contact);
+        databaseHandler.addContact(contact2);
+
         Contact c1 = databaseHandler.getContact(4);
         Log.v("Contacto SQL", c1.getName()+" --- "+c1.getPhoneNumber());
+        Log.v("Contacto SQL", " Contactos: "+databaseHandler.getAllContacts());
     }
 
 
